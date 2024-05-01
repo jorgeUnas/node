@@ -12,3 +12,15 @@ for (let i = 0; i < 1000; i++){
 }
 
 console.log(`Starting memory usage: ${initialMemory}. \nCurrent memory usage: ${process.memoryUsage().heapUsed}. \nAfter using the loop to add elements to the array, the process is using ${process.memoryUsage().heapUsed - initialMemory} more bytes of memory.`)
+
+// Working with the 'os' module
+
+const os = require('os'); 
+
+const server = {
+  type: os.type(), 
+  architecture: os.arch(), 
+  uptime: os.uptime()
+}
+
+console.log(server); 
