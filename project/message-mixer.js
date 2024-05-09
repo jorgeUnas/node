@@ -3,7 +3,9 @@
 // Encryption Functions
 /////////////////////////////////////////////
 
-const encryptors = require('./message-mixer.js');
+const encryptors = require('./encryptors.js');
+
+const {caesarCipher, symbolCipher, reverseCipher} = encryptors; 
 
 // User Input / Output Logic
 /////////////////////////////////////////////
