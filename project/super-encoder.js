@@ -10,7 +10,7 @@ const encodeMessage = (str) => {
 
 const decodeMessage = (str) => {
   // Use the encryptor functions here.
-  
+  return caesarCipher(symbolCipher(reverseCipher(str)), -8);
 }
 
 // User input / output.
