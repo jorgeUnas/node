@@ -36,7 +36,15 @@ app.put('/expressions/:id', (req, res, next) => {
 });
 
 // Add your POST handler below:
-
+app.post('/expressions', (req, res, next) => {
+   const receivedExpression  = createElement('expressions', req.query);
+   if(receivedExpression){
+    expressions.push(receivedExpression);
+    res.status(201).send(receivedExpression);
+   }else{
+    res.status(400).send();
+   }
+})
 
 
 app.listen(PORT, () => {
