@@ -15,9 +15,14 @@ seedElements(expressions, 'expressions');
 let animals = [];
 seedElements(animals, 'animals');
 
+const expressionsRouter = express.Router();
+app.use('/expressions', expressionsRouter);
 
 
 // Get all expressions
+expressionsRouter.get('/', (req, res, next) => {
+    res.send(expressions);
+});
 
 // Get a single expression
 app.get('/expressions/:id', (req, res, next) => {
