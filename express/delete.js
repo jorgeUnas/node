@@ -1,3 +1,18 @@
+/*
+//Delete request structure
+
+app.delete('/monsters/:id', (req, res, next) => {
+  const expressionIndex = getIndexById(req.params.id, monsters);
+  if (expressionIndex !== -1){
+       monsters.splice(expressionIndex, 1);
+       res.status(204).send();
+  }else{
+      res.status(404).send();
+  }
+})
+
+*/
+
 const express = require('express');
 const app = express();
 
@@ -5,7 +20,7 @@ const app = express();
 app.use(express.static('public'));
 
 const { getElementById, getIndexById, updateElement,
-  seedElements, createElement } = require('./utils');
+        seedElements, createElement } = require('./utils');
 
 const expressions = [];
 seedElements(expressions, 'expressions');
@@ -35,18 +50,28 @@ app.put('/expressions/:id', (req, res, next) => {
   }
 });
 
-// Add your POST handler below:
 app.post('/expressions', (req, res, next) => {
-   const receivedExpression  = createElement('expressions', req.query);
-   if(receivedExpression){
+  const receivedExpression = createElement('expressions', req.query);
+  if (receivedExpression) {
     expressions.push(receivedExpression);
     res.status(201).send(receivedExpression);
-   }else{
+  } else {
     res.status(400).send();
-   }
-})
+  }
+});
 
+// Add your DELETE handler below:
+app.delete('/expressions/:id', (req, res, next) => {
+  const expressionIndex = getIndexById(req.params.id, expressions);
+  if (expressionIndex !== -1){
+    expressions.splice(expressionIndex, 1);
+    res.status(204).send();
+  }else{
+    res.status(404).send();
+  }
+})
 
 app.listen(PORT, () => {
   console.log(`Listening on port ${PORT}`);
 });
+ 
