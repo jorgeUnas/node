@@ -30,6 +30,14 @@ app.get('/expressions/:id', (req, res, next) => {
   }
 });
 
+app.get('/animals/:id', (req, res, next) => {
+  const foundExpression = getElementById(req.params.id, animals);
+  if (foundExpression) {
+    res.send(foundExpression);
+  } else {
+    res.status(404).send();
+  }
+});
 
 app.put('/expressions/:id', (req, res, next) => {
   const expressionIndex = getIndexById(req.params.id, expressions);
