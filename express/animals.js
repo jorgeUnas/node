@@ -17,7 +17,9 @@ const PORT = process.env.PORT || 4001;
 app.get('/expressions', (req, res, next) => {
   res.send(expressions);
 });
-
+app.get('/animals', (req, res, next) => {
+  res.send(animals);
+});
 
 app.get('/expressions/:id', (req, res, next) => {
   const foundExpression = getElementById(req.params.id, expressions);
