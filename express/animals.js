@@ -49,7 +49,15 @@ app.put('/expressions/:id', (req, res, next) => {
   }
 });
 
-
+app.put('/animals/:id', (req, res, next) => {
+  const expressionIndex = getIndexById(req.params.id, animals);
+  if (expressionIndex !== -1) {
+    updateElement(req.params.id, req.query, animals);
+    res.send(animals[expressionIndex]);
+  } else {
+    res.status(404).send();
+  }
+});
 
 app.post('/expressions', (req, res, next) => {
   const receivedExpression = createElement('expressions', req.query);
