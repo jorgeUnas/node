@@ -4,24 +4,21 @@ const app = express();
 const { getElementById, getIndexById, updateElement,
   seedElements, createElement } = require('./utils');
 
-  
-
 const PORT = process.env.PORT || 4001;
 // Use static server to serve the Express Yourself Website
 app.use(express.static('public'));
 
-let expressions = [];
+const expressions = [];
 seedElements(expressions, 'expressions');
-let animals = [];
+const animals = [];
 seedElements(animals, 'animals');
 
 const expressionsRouter = express.Router();
 app.use('/expressions', expressionsRouter);
 
-
 // Get all expressions
 expressionsRouter.get('/', (req, res, next) => {
-    res.send(expressions);
+  res.send(expressions);
 });
 
 // Get a single expression
@@ -87,7 +84,7 @@ app.post('/animals', (req, res, next) => {
   const receivedAnimal = createElement('animals', req.query);
   if (receivedAnimal) {
     animals.push(receivedAnimal);
-    res.send(receivedAnimal);
+    res.status(201).send(receivedAnimal);
   } else {
     res.status(400).send();
   }
