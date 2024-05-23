@@ -1,5 +1,6 @@
 const express = require('express');
 const app = express();
+const expressionsRouter = require('./expressions.js');
 
 const { getElementById, getIndexById, updateElement,
   seedElements, createElement } = require('./utils');
@@ -13,7 +14,7 @@ seedElements(expressions, 'expressions');
 const animals = [];
 seedElements(animals, 'animals');
 
-const expressionsRouter = express.Router();
+
 app.use('/expressions', expressionsRouter);
 
 // Get all expressions
