@@ -9,18 +9,13 @@ const PORT = process.env.PORT || 4001;
 // Use static server to serve the Express Yourself Website
 app.use(express.static('public'));
 
-const expressions = [];
-seedElements(expressions, 'expressions');
+
 const animals = [];
 seedElements(animals, 'animals');
 
 
 app.use('/expressions', expressionsRouter);
 
-// Get all expressions
-expressionsRouter.get('/', (req, res, next) => {
-  res.send(expressions);
-});
 
 // Get a single expression
 app.get('/expressions/:id', (req, res, next) => {
