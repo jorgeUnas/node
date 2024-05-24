@@ -6,15 +6,15 @@ const { getElementById, getIndexById, updateElement,
 let animals = [];
 seedElements(animals, 'animals');
 
-animalsRouter = express.Router();
+const animalsRouter = express.Router();
 
 // Get all animals
-app.get('/animals', (req, res, next) => {
+animalsRouter.get('/animals', (req, res, next) => {
   res.send(animals);
 });
 
 // Get a single animal
-app.get('/animals/:id', (req, res, next) => {
+animalsRouter.get('/animals/:id', (req, res, next) => {
   const animal = getElementById(req.params.id, animals);
   if (animal) {
     res.send(animal);
@@ -24,7 +24,7 @@ app.get('/animals/:id', (req, res, next) => {
 });
 
 // Create an animal
-app.post('/animals', (req, res, next) => {
+animalsRouter.post('/animals', (req, res, next) => {
   const receivedAnimal = createElement('animals', req.query);
   if (receivedAnimal) {
     animals.push(receivedAnimal);
@@ -35,7 +35,7 @@ app.post('/animals', (req, res, next) => {
 });
 
 // Update an animal
-app.put('/animals/:id', (req, res, next) => {
+animalsRouter.put('/animals/:id', (req, res, next) => {
   const animalIndex = getIndexById(req.params.id, animals);
   if (animalIndex !== -1) {
     updateElement(req.params.id, req.query, animals);
@@ -46,7 +46,7 @@ app.put('/animals/:id', (req, res, next) => {
 });
 
 // Delete a single animal
-app.delete('/animals/:id', (req, res, next) => {
+animalsRouter.delete('/animals/:id', (req, res, next) => {
   const animalIndex = getIndexById(req.params.id, animals);
   if (animalIndex !== -1) {
     animals.splice(animalIndex, 1);
