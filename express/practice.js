@@ -23,7 +23,7 @@ const battlefields = {
   }
 }
 
-// GET request
+// GET requests
 
 app.get('/sausages', (req, res, next) => {
   res.send(sausageTypes)
@@ -36,7 +36,12 @@ app.get('/metals', (req, res, next) => {
 
 app.get('/battlefields/:name', (req, res, next) => {
   const battlefieldName = req.params.name;
-  
+  const battlefield = battlefields[battlefieldName];
+  if(battlefield){
+    res.send(battlefield)
+  }else{
+    res.status(404).send('')
+  }
 });
 
 //Start the app
