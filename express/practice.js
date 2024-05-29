@@ -17,6 +17,7 @@ app.get('/sausages', (req, res, next) => {
 
 app.get('/metals', (req, res, next) => {
   const arrayToSend = buildingMaterials.metal;
+  res.send(arrayToSend)
 });
 
 app.listen(PORT, () => {
