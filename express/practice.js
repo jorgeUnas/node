@@ -69,6 +69,12 @@ app.get('/battlefields/:name', (req, res, next) => {
 
 // Put request
 
+app.put('/currencies/:name/countries', (req, res, next) => {
+  const currencyName = req.params.name;
+  const countries = req.query;
+  currencies[currencyName] = countries;
+  res.send(currencies[currencyName]);
+});
 
 //Start the app
 
