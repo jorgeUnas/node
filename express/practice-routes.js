@@ -16,7 +16,7 @@ app.get('/pastas', (req, res, next) => {
 const sauceRouter = express.Router();
 
 // Add your code here:
-
+app.use('/sauces', sauceRouter);
 
 const sauces = ['carbonara', 'primavera', 'bolognese', 'puttanesca', 'fra diavolo']
 
