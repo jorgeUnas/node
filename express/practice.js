@@ -45,6 +45,8 @@ const currencies = {
   },
 };
 
+const soups = ['gazpacho', 'borscht', 'primordial', 'avgolemono', 'laksa'];
+
 // GET requests
 
 app.get('/sausages', (req, res, next) => {
