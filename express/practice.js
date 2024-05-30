@@ -78,6 +78,16 @@ app.put('/currencies/:name/countries', (req, res, next) => {
   res.send(currencies[currencyName]);
 });
 
+
+// POST requests
+
+app.post('/soups', (req, res, next) => {
+  const newSoup = req.query.name
+  soups.push(newSoup);
+  res.status(201).send(newSoup);
+})
+
+
 //Start the app
 
 app.listen(PORT, () => {
