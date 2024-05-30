@@ -3,11 +3,15 @@ const app = express();
 
 const PORT = process.env.PORT || 4001;
 
+// Arrays
+
 const sausageTypes = ['bratwurst', 'andouille', 'chorizo', 'boudin', 'kielbasa'];
+
 const buildingMaterials = {
   wood: ['plywood', '2x4s', 'cedar shingles'],
   metal: ['steel girders', 'wall studs', 'rebar'],
 };
+
 const battlefields = {
   fortSumter: {
     state: 'SC',
@@ -22,6 +26,24 @@ const battlefields = {
     state: 'MD',
   }
 }
+
+const currencies = {
+  diram: {
+    countries: ['UAE', 'Morocco'],
+  },
+  real: {
+    countries: ['Brazil'],
+  },
+  dinar: {
+    countries: ['Algeria', 'Bahrain', 'Jordan', 'Kuwait'],
+  },
+  vatu: {
+    countries: ['Vanuatu'],
+  },
+  shilling: {
+    countries: ['Tanzania', 'Uganda', 'Somalia', 'Kenya'],
+  },
+};
 
 // GET requests
 
@@ -43,6 +65,8 @@ app.get('/battlefields/:name', (req, res, next) => {
     res.status(404).send('')
   }
 });
+
+// Put request
 
 //Start the app
 
