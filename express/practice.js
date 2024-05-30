@@ -8,6 +8,20 @@ const buildingMaterials = {
   wood: ['plywood', '2x4s', 'cedar shingles'],
   metal: ['steel girders', 'wall studs', 'rebar'],
 };
+const battlefields = {
+  fortSumter: {
+    state: 'SC',
+  },
+  manassas: {
+    state: 'VA',
+  },
+  gettysburg: {
+    state: 'PA',
+  },
+  antietam: {
+    state: 'MD',
+  }
+}
 
 // GET request
 
@@ -19,6 +33,13 @@ app.get('/metals', (req, res, next) => {
   const arrayToSend = buildingMaterials.metal;
   res.send(arrayToSend)
 });
+
+app.get('/battlefields/:name', (req, res, next) => {
+  const battlefieldName = req.params.name;
+  
+});
+
+//Start the app
 
 app.listen(PORT, () => {
   console.log(`App is listening on Port ${PORT}`)
