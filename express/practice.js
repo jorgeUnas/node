@@ -101,7 +101,17 @@ app.post('/soups', (req, res, next) => {
 
 //DELETE request
 
+app.delete('/puddings/:flavor', (req, res, next) => {
+  const flavorToRemove = req.params.flavor;
 
+  if(findPuddingIndex(flavorToRemove) !== -1){
+    const index = findPuddingIndex(flavorToRemove);
+    deletePuddingAtIndex(index);
+    res.status(204).send(flavorToRemove)
+  }else{
+    res.status(404).send(flavorToRemove)
+  }
+})
 
 //Start the app
 
