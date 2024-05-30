@@ -23,7 +23,25 @@ const battlefields = {
   }
 }
 
-// GET request
+const currencies = {
+  diram: {
+    countries: ['UAE', 'Morocco'],
+  },
+  real: {
+    countries: ['Brazil'],
+  },
+  dinar: {
+    countries: ['Algeria', 'Bahrain', 'Jordan', 'Kuwait'],
+  },
+  vatu: {
+    countries: ['Vanuatu'],
+  },
+  shilling: {
+    countries: ['Tanzania', 'Uganda', 'Somalia', 'Kenya'],
+  },
+};
+
+// GET requests
 
 app.get('/sausages', (req, res, next) => {
   res.send(sausageTypes)
@@ -36,8 +54,22 @@ app.get('/metals', (req, res, next) => {
 
 app.get('/battlefields/:name', (req, res, next) => {
   const battlefieldName = req.params.name;
+  const battlefield = battlefields[battlefieldName];
+  if(battlefield){
+    res.send(battlefield)
+  }else{
+    res.status(404).send('')
+  }
+});
+
+// PUT requests
+
+app.get('/battlefields/:name', (req, res, next) => {
+  const currencyName = req.params.name;
+  const country = req.query; 
   
 });
+
 
 //Start the app
 
