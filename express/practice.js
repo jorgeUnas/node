@@ -47,6 +47,18 @@ const currencies = {
 
 const soups = ['gazpacho', 'borscht', 'primordial', 'avgolemono', 'laksa'];
 
+const puddingFlavors = ['chocolate', 'banana', 'butterscotch', 'pistachio'];
+
+// Some methods for puddingFlavors array 
+
+const findPuddingIndex = (name) => {
+  return puddingFlavors.indexOf(name);
+}
+
+const deletePuddingAtIndex = (index) => {
+  puddingFlavors.splice(index, 1);
+}
+
 // GET requests
 
 app.get('/sausages', (req, res, next) => {
@@ -87,6 +99,19 @@ app.post('/soups', (req, res, next) => {
   res.status(201).send(newSoup);
 })
 
+//DELETE request
+
+app.delete('/puddings/:flavor', (req, res, next) => {
+  const flavorToRemove = req.params.flavor;
+
+  if(findPuddingIndex(flavorToRemove) !== -1){
+    const index = findPuddingIndex(flavorToRemove);
+    deletePuddingAtIndex(index);
+    res.status(204).send(flavorToRemove)
+  }else{
+    res.status(404).send(flavorToRemove)
+  }
+})
 
 //Start the app
 
