@@ -24,7 +24,9 @@ const jellybeanBag = {
 };
 
 // Add your logging function here:
-
+const logRequest  = (verb) => {
+  console.log(` ${verb} Request Received`);
+}
 
 
 app.get('/beans/', (req, res, next) => {
