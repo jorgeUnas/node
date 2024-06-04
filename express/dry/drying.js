@@ -34,6 +34,9 @@ app.use('/beans/:beanName', (req, res, next) => {
     console.log('Response Sent');
     return res.status(404).send('Bean with that name does not exist');
   }
+  req.bean = jellybeanBag[beanName]
+  req.beanName = beanName; 
+  next();
 })
 
 app.get('/beans/', (req, res, next) => {
