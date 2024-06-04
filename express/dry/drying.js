@@ -47,6 +47,10 @@ app.use('/beans/:beanName', (req, res, next) => {
 });
 
 
+app.use(['/beans/', '/beans/:beanName'], (req, res, next) => {
+
+})
+
 app.get('/beans/', (req, res, next) => {
   res.send(jellybeanBag);
   console.log('Response Sent');
