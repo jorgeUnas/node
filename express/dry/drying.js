@@ -25,6 +25,7 @@ const jellybeanBag = {
 
 app.use((req, res, next) => {
   console.log(`${req.method} Request Received`);
+  next();
 });
 
 app.get('/beans/', (req, res, next) => {
