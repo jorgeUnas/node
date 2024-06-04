@@ -41,7 +41,7 @@ app.use('/beans/:beanName', (req, res, next) => {
 });
 
 // Add your code below:
-app.use(['/beans/', '/beans/:beanName'], (req, res, next) => {
+/*app.use(['/beans/', '/beans/:beanName'], (req, res, next) => {
   let bodyData = '';
   req.on('data', (data) => {
     bodyData += data;
@@ -53,6 +53,22 @@ app.use(['/beans/', '/beans/:beanName'], (req, res, next) => {
     next();
   });
 });
+*/
+
+// Use a function as a middleware to replace the last code
+
+const bodyParser = (req, res, next) => {
+  let bodyData = '';
+  req.on('data', (data) => {
+    bodyData += data;
+  });
+  req.on('end', () => {
+    if (bodyData) {
+      req.body = JSON.parse(bodyData);
+    }
+    next();
+  });
+};
 
 app.get('/beans/', (req, res, next) => {
   res.send(jellybeanBag);
