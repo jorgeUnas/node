@@ -34,7 +34,10 @@ app.use(bodyParser.json());
 app.use('/beans/:beanName', (req, res, next) => {
   const beanName = req.params.beanName;
   if (!jellybeanBag[beanName]) {
-    return res.status(404).send('Bean with that name does not exist');
+    //return res.status(404).send('Bean with that name does not exist');
+    const err = new Error('Bean with that name does not exist');
+    err.status = 404;
+    return next(err);
   }
   req.bean = jellybeanBag[beanName];
   req.beanName = beanName;
@@ -80,7 +83,10 @@ app.post('/beans/', (req, res, next) => {
   const body = req.body;
   const beanName = body.name;
   if (jellybeanBag[beanName] || jellybeanBag[beanName] === 0) {
-    return res.status(400).send('Bag with that name already exists!');
+    //return res.status(400).send('Bag with that name already exists!');
+    const err = new Error('Bean with that name already exists!');
+    err.status = 400;
+    return next(err);
   }
   const numberOfBeans = Number(body.number) || 0;
   jellybeanBag[beanName] = {
@@ -102,7 +108,10 @@ app.post('/beans/:beanName/add', (req, res, next) => {
 app.post('/beans/:beanName/remove', (req, res, next) => {
   const numberOfBeans = Number(req.body.number) || 0;
   if (req.bean.number < numberOfBeans) {
-    return res.status(400).send('Not enough beans in the jar to remove!');
+    //return res.status(400).send('Not enough beans in the jar to remove!');
+    const err = new Error('Not enough beans in the jar to remove!');
+    err.status = 400;
+    return next(err);
   }
   req.bean.number -= numberOfBeans;
   res.send(req.bean);
