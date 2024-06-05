@@ -33,7 +33,6 @@ app.use((req, res, next) => {
 app.use('/beans/:beanName', (req, res, next) => {
   const beanName = req.params.beanName;
   if (!jellybeanBag[beanName]) {
-    console.log('Response Sent');
     return res.status(404).send('Bean with that name does not exist');
   }
   req.bean = jellybeanBag[beanName];
@@ -73,7 +72,6 @@ const bodyParser = (req, res, next) => {
 
 app.get('/beans/', (req, res, next) => {
   res.send(jellybeanBag);
-  console.log('Response Sent');
 });
 
 app.post('/beans/', bodyParser, (req, res, next) => {
@@ -87,19 +85,16 @@ app.post('/beans/', bodyParser, (req, res, next) => {
     number: numberOfBeans
   };
   res.send(jellybeanBag[beanName]);
-  console.log('Response Sent');
 });
 
 app.get('/beans/:beanName', (req, res, next) => {
   res.send(req.bean);
-  console.log('Response Sent');
 });
 
 app.post('/beans/:beanName/add', bodyParser, (req, res, next) => {
   const numberOfBeans = Number(req.body.number) || 0;
   req.bean.number += numberOfBeans;
   res.send(req.bean);
-  console.log('Response Sent');
 });
 
 app.post('/beans/:beanName/remove', bodyParser, (req, res, next) => {
@@ -109,14 +104,12 @@ app.post('/beans/:beanName/remove', bodyParser, (req, res, next) => {
   }
   req.bean.number -= numberOfBeans;
   res.send(req.bean);
-  console.log('Response Sent');
 });
 
 app.delete('/beans/:beanName', (req, res, next) => {
   const beanName = req.beanName;
   jellybeanBag[beanName] = null;
   res.status(204).send();
-  console.log('Response Sent');
 });
 
 app.put('/beans/:beanName/name', (req, res, next) => {
@@ -125,7 +118,6 @@ app.put('/beans/:beanName/name', (req, res, next) => {
   jellybeanBag[newName] = req.bean;
   jellybeanBag[beanName] = null;
   res.send(jellybeanBag[newName]);
-  console.log('Response Sent');
 });
 
 app.listen(PORT, () => {
