@@ -26,7 +26,7 @@ const jellybeanBag = {
 
 // Logging Middleware
 app.use((req, res, next) => {
-  console.log(`${req.method} Request Received`);
+  morgan('tiny')
   next();
 });
 
