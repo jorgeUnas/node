@@ -122,6 +122,15 @@ app.put('/beans/:beanName/name', (req, res, next) => {
   res.send(jellybeanBag[newName]);
 });
 
+//Implement an error handler
+
+app.use((err, req, res, next) => {
+  if (!err.status) {
+    err.status = 500;
+  }
+  res.status(err.status).send(err.message);
+});
+
 app.listen(PORT, () => {
   console.log(`Server is listening on port ${PORT}`);
 });
