@@ -1,6 +1,7 @@
 const express = require('express');
 const app = express();
 const morgan = require('morgan');
+const bodyParser = require('body-parser');
 
 app.use(express.static('public'));
 
@@ -31,6 +32,9 @@ if (!process.env.IS_TEST_ENV) {
 }
 
 // Parsing
+
+app.use(bodyParser.json());
+/*
 app.use((req, res, next) => {
   let bodyData = '';
   req.on('data', (data) => {
@@ -48,6 +52,7 @@ app.use((req, res, next) => {
 app.get('/cards/', (req, res, next) => {
   res.send(cards);
 });
+*/
 
 // Create a new Card
 app.post('/cards/', (req, res, next) => {
