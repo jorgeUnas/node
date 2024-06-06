@@ -2,6 +2,8 @@ const express = require('express');
 const app = express();
 const morgan = require("morgan");
 const bodyParser = require('body-parser'); 
+const errorhandler = require('errorhandler');
+
 
 app.use(express.static('public'));
 
@@ -30,6 +32,10 @@ app.use(morgan('dev'));
 
 //Body-parser 
 app.use(bodyParser.json()); 
+
+// Errorhandler middleware 
+
+app.use(errorhandler());
 
 app.use('/beans/:beanName', (req, res, next) => {
   const beanName = req.params.beanName;
