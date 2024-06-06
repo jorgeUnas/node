@@ -25,10 +25,7 @@ const jellybeanBag = {
 };
 
 // Logging Middleware
-app.use((req, res, next) => {
-  morgan('tiny')
-  next();
-});
+app.use(morgan('dev'));
 
 app.use('/beans/:beanName', (req, res, next) => {
   const beanName = req.params.beanName;
