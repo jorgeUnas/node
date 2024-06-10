@@ -71,7 +71,7 @@ const spicesRouter = require('./spicesRouter');
 
 // Write your code below:
 
-
+app.use('/spice-racks/:spiceRackId/spices', spicesRouter);
 
 app.listen(PORT, () => {
   console.log(`Server is listening on port ${PORT}`);
