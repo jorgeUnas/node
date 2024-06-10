@@ -1,101 +1,98 @@
 const express = require('express');
 const app = express();
-const morgan = require('morgan');
 const bodyParser = require('body-parser');
 
 app.use(express.static('public'));
 
 const PORT = process.env.PORT || 4001;
 
-const cards = [
+const spiceRack = [
   {
     id: 1,
-    suit: 'Clubs',
-    rank: '2'
+    name: 'cardamom',
+    grams: 45,
   },
   {
     id: 2,
-    suit: 'Diamonds',
-    rank: 'Jack'
+    name: 'pimento',
+    grams: 20,
   },
   {
     id: 3,
-    suit: 'Hearts',
-    rank: '10'
+    name: 'cumin',
+    grams: 450,
+  },
+  {
+    id: 4,
+    name: 'sichuan peppercorns',
+    grams: 107,
   }
 ];
-let nextId = 4;
 
-// Logging
-if (!process.env.IS_TEST_ENV) {
-  app.use(morgan('short'));
-}
+let nextSpiceId = 5;
 
-// Parsing
 app.use(bodyParser.json());
 
-// Refactor /cards/:cardId routes
-app.use('/cards/:cardId', (req, res, next) => {
-  const cardId = Number(req.params.cardId);
-  const cardIndex = cards.findIndex(card => card.id === cardId);
-  if (cardIndex === -1) {
-    return res.status(404).send('Card not found');
+// Add your code here:
+app.param('spiceId', (req, res, next, id) => {
+  let spiceId = Number(id);
+ let spiceIndex =  spiceRack.findIndex(spice => spice.id === spiceId);
+ if (spiceIndex !== -1) {
+  req.spiceIndex = spiceIndex;
+  next()
+ } else{
+  res.status(404).send();
+ }
+})
+
+
+app.get('/spices/', (req, res, next) => {
+  res.send(spiceRack);
+});
+
+app.post('/spices/', (req, res, next) => {
+  const newSpice = req.body.spice;
+  if (newSpice.name  && newSpice.grams) {
+    newSpice.id = nextSpiceId++;
+    spiceRack.push(newSpice);
+    res.send(newSpice);
+  } else {
+    res.status(400).send();
   }
-  req.cardIndex = cardIndex;
-  next();
 });
 
-// create a middleware validate card
-
-const validateCard = (req, res, next) => {
-  const newCard = req.body;
-  const validSuits = ['Clubs', 'Diamonds', 'Hearts', 'Spades'];
-  const validRanks = ['2', '3', '4', '5', '6', '7', '8', '9', '10', 'Jack', 'Queen', 'King', 'Ace'];
-  if (validSuits.indexOf(newCard.suit) === -1 || validRanks.indexOf(newCard.rank) === -1) {
-    return res.status(400).send('Invalid card!');
+app.get('/spices/:spiceId', (req, res, next) => {
+  const spiceId = Number(req.params.id);
+  const spiceIndex = spiceRack.findIndex(spice => spice.id === spiceId);
+  if (spiceIndex !== -1) {
+    res.send(spiceRack[spiceIndex]);
+  } else {
+    res.status(404).send('Spice not found.');
   }
-  next();
-}
-
-// Get all Cards
-app.get('/cards/', (req, res, next) => {
-  res.send(cards);
 });
 
-// Create a new Card
-app.post('/cards/', validateCard, (req, res, next) => {
-  const newCard = req.body;
-  newCard.id = nextId++;
-  cards.push(newCard);
-  res.status(201).send(newCard);
-
-});
-
-// Get a single Card
-app.get('/cards/:cardId', (req, res, next) => {
-
-  res.send(cards[req.cardIndex]);
-});
-
-// Update a Card
-app.put('/cards/:cardId', validateCard, (req, res, next) => {
-    const newCard = req.body;
-  const cardId = Number(req.params.cardId);
-  if (!newCard.id || newCard.id !== cardId) {
-    newCard.id = cardId;
+app.put('/spices/:spiceId', (req, res, next) => {
+  const spiceId = Number(req.params.id);
+  const spiceIndex = spiceRack.findIndex(spice => spice.id === spiceId);
+  if (spiceIndex !== -1) {
+    spiceRack[spiceIndex] = req.body.spice;
+    res.send(spiceRack[spiceIndex]);
+  } else {
+    res.status(404).send('Spice not found.');
   }
-  cards[req.cardIndex] = newCard;
-  res.send(newCard);
 });
 
-// Delete a Card
-app.delete('/cards/:cardId', (req, res, next) => {
-
-  cards.splice(req.cardIndex, 1);
-  res.status(204).send();
+app.delete('/spices/:spiceId', (req, res, next) => {
+  const spiceId = Number(req.params.id);
+  const spiceIndex = spiceRack.findIndex(spice => spice.id === spiceId);
+  if (spiceIndex !== -1) {
+    spiceRack.splice(spiceIndex, 1);
+    res.status(204).send();
+  } else {
+    res.status(404).send('Spice not found.');
+  }
 });
 
-// Start the server
 app.listen(PORT, () => {
   console.log(`Server is listening on port ${PORT}`);
 });
