@@ -13,7 +13,11 @@ app.get("/foods/:index", (req, res, next) => {
   }
 });
 
-const errorHandler = () => {
+const errorHandler = (err, req, res, next) => {
+  if (!err.status) {
+    err.status = 500;
+  } 
+    res.status(err.status).send(err.message);
 
 };
 
