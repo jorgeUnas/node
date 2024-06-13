@@ -14,7 +14,7 @@ const indexExists = (req, res, next) => {
 
 // Add your code below:
 
-
+app.use('/data/:index', indexExists);
 
 // Add your code above
 
