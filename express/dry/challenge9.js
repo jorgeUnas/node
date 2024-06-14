@@ -21,33 +21,25 @@ const apples = {
 
 // Finish the appleRouter.param call:
 
-appleRouter.param('variety');
+appleRouter.param('variety', (req, res, next, variety) => {
+  if (!apples[variety]) {
+    res.status(404).send();
+  }else{
+    req.variety = apples[variety];
+    next();
+  }
+});
 
 // Refactor the routes below to utilize your middleware:
 
 appleRouter.get('/:variety/description', (req, res, next) => {
-  const variety = req.params.variety;
-  if (apples[variety]) {
-    res.send(apples[variety].description);
-  } else {
-    res.status(404).send();
-  }
+  res.send(req.variety.description);
 });
 
 appleRouter.get('/:variety/price-range', (req, res, next) => {
-  const variety = req.params.variety;
-  if (apples[variety]) {
-    res.send(apples[variety].priceRange);
-  } else {
-    res.status(404).send();
-  }
+  res.send(req.variety.priceRange);
 });
 
 appleRouter.get('/:variety/color', (req, res, next) => {
-  const variety = req.params.variety;
-  if (apples[variety]) {
-    res.send(apples[variety].color);
-  } else {
-    res.status(404).send();
-  }
+  res.send(req.variety.color);
 });
