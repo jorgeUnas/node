@@ -15,7 +15,7 @@ function selectProfile(name){
 
 function loadProfile(){
   // Set character to the 'profile' value from localStorage
-  var character = null;
+  var character = localStorage.getItem('profile');
 
   if (character) {
     display_character(character)
