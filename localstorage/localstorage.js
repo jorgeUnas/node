@@ -9,6 +9,7 @@ function selectProfile(name){
     alert("Now setting character to... " + name)
   }
   // Set the profile in localStorage below:
+  localStorage.setItem('profile', name);
   
 }
 
