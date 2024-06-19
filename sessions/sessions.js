@@ -4,14 +4,20 @@ const app = express();
 // Import express-session below:
 const session = require('express-session');
 
-// Create your session middleware below:
+// Create your store below:
+ const store = new session.MemoryStore();
+ 
+ // Create your session middleware below:
+
 app.use(
   session({
-    secret: 'Random string',
+    secret: "D53gxl41G",
     resave: false,
     saveUninitialized: false,
+    store
   })
 );
+
 
 const PORT = process.env.PORT || 4001;
 
