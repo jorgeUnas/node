@@ -1,8 +1,9 @@
 const express = require("express");
 const app = express();
 // Import the passport library below:
-
+const passport = require("passport");
 // Import the passport-local library below:
+const LocalStrategy = require("passport-local").Strategy;
 
 const session = require("express-session");
 const PORT = process.env.PORT || 5000;
