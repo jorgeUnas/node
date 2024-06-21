@@ -6,7 +6,6 @@ const passport = require("passport");
 const LocalStrategy = require("passport-local").Strategy;
 
 
-app.use(passport.initialize());
 
 const session = require("express-session");
 const PORT = process.env.PORT || 5000;
@@ -21,7 +20,11 @@ app.use(
 
 // Add the middleware to initialize the passport library below:
 
+app.use(passport.initialize());
+
 // Add the middleware to implement a session with passport below:
+app.use(passport.session());
+
 
 app.get("/", (req, res) => {
   res.send("Hello from the homepage!");
