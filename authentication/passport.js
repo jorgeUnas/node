@@ -5,6 +5,9 @@ const passport = require("passport");
 // Import the passport-local library below:
 const LocalStrategy = require("passport-local").Strategy;
 
+
+app.use(passport.initialize());
+
 const session = require("express-session");
 const PORT = process.env.PORT || 5000;
 
