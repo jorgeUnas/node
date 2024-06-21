@@ -27,11 +27,14 @@ app.use(passport.session());
 
 // Add your passport local strategy below:
 
-passport.use(new LocalStrategy(
-  function (username, password, done) {
-    // Look up user in the db
-    })
- );
+passport.use(
+  new LocalStrategy(function (username, password, done) {
+
+    db.users.findByUsername(username, (err, user) => {
+       if(err) return done(err);
+    });
+  })
+);
 
 
 app.get("/", (req, res) => {
