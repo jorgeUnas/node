@@ -83,12 +83,17 @@ app.post("/register", async (req, res) => {
   const newUser = await db.users.createUser({username, password}); 
 
   // Add if/else statement with the new user as the condition:
-  if () {
+  if (newUser) {
     // Send correct response if new user is created:
-
+    res.status(201).json({
+      msg: "New user created!",
+      newUser
+    });
   } else {
     // Send correct response if new user failed to be created:
-    
+    res.status(500).json({
+      msg: "Unable to create user!"
+    });
   }
 });
 
