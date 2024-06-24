@@ -58,6 +58,15 @@ app.get("/", (req, res) => {
   res.send("Hello from the homepage!");
 });
 
+// Add the passport middleware below:
+app.post(
+  "/login",
+  passport.authenticate("local", { failureRedirect : "/login"}),
+  (req, res) => {
+    res.redirect("profile");
+  }
+);
+
 app.listen(PORT, () => {
   console.log(`Server is listening on port: ${PORT}`);
 });
