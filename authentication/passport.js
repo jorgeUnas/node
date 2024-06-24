@@ -33,6 +33,7 @@ passport.use(
     db.users.findByUsername(username, (err, user) => {
        if(err) return done(err);
        if(!user) return done(null, false);
+       if(user.password != password) return done(null, false);
     });
   })
 );
