@@ -76,6 +76,21 @@ app.post(
   }
 );
 
+// POST REGISTER:
+app.post("/register", async (req, res) => {
+  const { username, password } = req.body;
+  // Create new user:
+
+  // Add if/else statement with the new user as the condition:
+  if () {
+    // Send correct response if new user is created:
+
+  } else {
+    // Send correct response if new user failed to be created:
+    
+  }
+});
+
 app.listen(PORT, () => {
   console.log(`Server is listening on port: ${PORT}`);
 });
