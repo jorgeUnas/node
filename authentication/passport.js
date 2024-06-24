@@ -31,6 +31,13 @@ passport.serializeUser((user, done) => {
   done(null, user.id);
 });
 
+// Complete the deserializeUser function below:
+passport.deserializeUser((id, done) => {
+    db.users.findById(id, function(err, user){
+
+    })
+});
+
 // Add your passport local strategy below:
 
 passport.use(
