@@ -25,6 +25,12 @@ app.use(passport.initialize());
 // Add the middleware to implement a session with passport below:
 app.use(passport.session());
 
+
+// Complete the serializeUser function below:
+passport.serializeUser((user, done) => {
+  done(null, user.id);
+});
+
 // Add your passport local strategy below:
 
 passport.use(
