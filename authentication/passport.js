@@ -58,6 +58,15 @@ app.get("/", (req, res) => {
   res.send("Hello from the homepage!");
 });
 
+app.get("/login", (req, res) => {
+  res.render("login");
+});
+
+app.get("/profile", (req, res) => {
+  // Pass user object stored in session to the view page:
+  res.render("profile", { user: req.user });
+});
+
 // Add the passport middleware below:
 app.post(
   "/login",
