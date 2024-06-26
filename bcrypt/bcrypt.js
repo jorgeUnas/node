@@ -4,7 +4,7 @@ const bcrypt = require("bcrypt");
 
 const passwordHash = async (password, saltRounds) => {
   try {
-
+    const salt = await bcrypt.genSalt(saltRounds); 
   }
   catch(err){
 
