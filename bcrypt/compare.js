@@ -7,6 +7,7 @@ const comparePasswords = async (password, hash) => {
     const matchFound = await bcrypt.compare(password, hash);
     return matchFound;
   }catch(err){
-
+    console.log(err);
   };
+  return false; 
 }
