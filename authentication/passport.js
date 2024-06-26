@@ -80,6 +80,7 @@ app.post(
 app.post("/register", async (req, res) => {
   const { username, password } = req.body;
   // Create new user:
+  const newUser = await db.users.createUser({username, password}); 
 
   // Add if/else statement with the new user as the condition:
   if () {
