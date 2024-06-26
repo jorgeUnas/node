@@ -53,6 +53,11 @@ passport.use(
   })
 );
 
+// Add the logout logic
+app.get("/logout", (req, res) => {
+  req.logout();
+  res.redirect('/login');
+});
 
 app.get("/", (req, res) => {
   res.send("Hello from the homepage!");
