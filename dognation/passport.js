@@ -17,5 +17,8 @@ new LocalStrategy(function (username, password, done) {
 );
 
 // Serialize a user
+passport.serializeUser((user, done) => {
+  done(null, user.id);
+});
 
 // Deserialize a user
