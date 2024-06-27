@@ -9,6 +9,8 @@ const passwordHash = async (password, saltRounds) => {
     return hash;
   }
   catch(err){
-
+      console.log(err);
   }
+  return null;
+  
 };
