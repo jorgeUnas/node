@@ -30,6 +30,7 @@ app.use(
 );
 
 // Passport Config
+app.use(passport.initialize());
 
 // Routes
 app.use(require("./routes/index.routes"));
