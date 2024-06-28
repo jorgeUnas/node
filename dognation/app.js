@@ -32,6 +32,9 @@ app.use(
 // Passport Config
 app.use(passport.initialize());
 
+// Add the middleware to implement a session with passport below:
+app.use(passport.session());
+
 // Routes
 app.use(require("./routes/index.routes"));
 
