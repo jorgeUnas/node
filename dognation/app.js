@@ -16,6 +16,19 @@ require("./config/passport");
 
 // Session Config
 
+app.use(
+  session({
+    secret: "hola123",
+    cookie: {
+      maxAge: 1000 * 60 * 24,
+      sameSite: "none",
+      secure: true,
+    },
+    saveUninitialized: false,
+    resave: false,
+  })
+);
+
 // Passport Config
 
 // Routes
