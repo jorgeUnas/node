@@ -28,7 +28,7 @@ passport.serializeUser((user, done) => {
 // Deserialize a user
 
 passport.deserializeUser((id, done) => {
-  helper.findById(user.id, function(err, user){
+  helper.findById(id, function(err, user){
     if(err) return done(err);
     done(null, user)
   })

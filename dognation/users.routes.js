@@ -41,7 +41,7 @@ passport.authenticate("local", { failureRedirect : "/login"}),
 // Log out user:
 router.get("/logout", (req, res) => {
   req.logout();
-  res.redirect("/login");
+  res.redirect("/");
 });
 
 router.get("/register", (req, res) => {
