@@ -3,6 +3,9 @@ const path = require('path');
 // Import oauth2-server here
 const OAuth2Server = require('oauth2-server');
 
+// Create a oauth instance 
+const oauth = new OAuth2Server();
+
 const app = express();
 
 app.use(express.json());
