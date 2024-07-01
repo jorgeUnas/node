@@ -3,7 +3,7 @@ module.exports = {
     clientId: 'codecademy',
     clientSecret: 'codec@demy',
     grants: ['client_credentials']
-  }]
-  // Add tokens[]
-  
+  }],
+  // Add tokens
+  tokens: []
 }
