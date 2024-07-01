@@ -5,7 +5,9 @@ const OAuth2Server = require('oauth2-server');
 
 // Create a oauth instance 
 const oauth = new OAuth2Server({
-  model: require('./model.js')
+  model: require('./model.js'),
+  allowBearerTokensInQueryString: true,
+  accessTokenLifetime: 60 * 60
 });
 
 const app = express();
