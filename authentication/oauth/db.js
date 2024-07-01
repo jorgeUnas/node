@@ -1,6 +1,7 @@
 module.exports = {
   confidentialClients: [{
-    clientId: 'codecademy'
+    clientId: 'codecademy',
+    clientSecret: 'codec@demy'
   }]
   // Add tokens[]
   
