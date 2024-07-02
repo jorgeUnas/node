@@ -9,4 +9,5 @@ const getClient = (clientId, clientSecret) => {
         return client.clientId === clientId &&
         client.clientSecret === clientSecret
   });
+  return confidentialClients[0];
 };
