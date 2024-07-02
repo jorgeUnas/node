@@ -25,5 +25,6 @@ const saveToken = (token, client, user) => {
 }
 
 module.exports = {
-  getClient: getClient
+  getClient: getClient,
+  saveToken: saveToken
 }
