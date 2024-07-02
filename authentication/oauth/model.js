@@ -24,6 +24,9 @@ const saveToken = (token, client, user) => {
   return token;
 }
 
+// Write getUserFromClient() function here
+const getUserFromClient = (client) => {};
+
 module.exports = {
   getClient: getClient,
   saveToken: saveToken
