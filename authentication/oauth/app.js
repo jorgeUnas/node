@@ -4,7 +4,9 @@ const path = require('path');
 const OAuth2Server = require('oauth2-server');
 
 // Create a oauth instance 
-const oauth = new OAuth2Server();
+const oauth = new OAuth2Server({
+  model: require('./model.js')
+});
 
 const app = express();
 
