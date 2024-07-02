@@ -11,3 +11,7 @@ const getClient = (clientId, clientSecret) => {
   });
   return confidentialClients[0];
 };
+
+module.exports = {
+  getClient: getClient
+}
