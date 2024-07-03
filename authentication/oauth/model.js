@@ -12,6 +12,11 @@ const getClient = (clientId, clientSecret) => {
   return confidentialClients[0];
 };
 
+// Write saveToken() function here
+const saveToken = (token, client, user) => {
+  
+}
+
 module.exports = {
   getClient: getClient
 }
