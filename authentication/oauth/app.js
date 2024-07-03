@@ -24,7 +24,10 @@ const obtainToken = (req, res) => {
   return oauth.token(request, response)
           .then((token) => {
             res.json(token);
+          }).catch((err) => {
+            res.json(err);
           })
+            
 }
 
 // Write '/auth' route here
