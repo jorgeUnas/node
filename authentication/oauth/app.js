@@ -22,6 +22,9 @@ const obtainToken = (req, res) => {
   const request = new OAuth2Server.Request(req);
   const response = new OAuth2Server.Response(res);
   return oauth.token(request, response)
+          .then((token) => {
+            res.json(token);
+          })
 }
 
 // Write '/auth' route here
