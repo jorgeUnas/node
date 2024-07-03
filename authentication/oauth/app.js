@@ -17,6 +17,14 @@ app.use(express.urlencoded({extended: true}));
 
 const PORT = 4001;
 
+// Write obtainToken() here
+const obtainToken = (req, res) => {
+  
+}
+
+// Write '/auth' route here
+
+
 app.get('/', (req, res)=>{
     res.sendFile(path.join(__dirname, 'public/home.html'));
 })
