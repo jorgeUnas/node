@@ -20,6 +20,8 @@ const saveToken = (token, client, user) => {
   token.user = {
     username: user.username
   }
+  db.tokens.push(token);
+  return token;
 }
 
 module.exports = {
