@@ -17,6 +17,11 @@ app.use(express.urlencoded({extended: true}));
 
 const PORT = 4001;
 
+// Write authenticateRequest() here
+const authenticateRequest = (req, res, next) => {
+
+}
+
 // Write obtainToken() here
 const obtainToken = (req, res) => {
   const request = new OAuth2Server.Request(req);
