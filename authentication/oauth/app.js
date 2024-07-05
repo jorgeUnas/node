@@ -19,7 +19,8 @@ const PORT = 4001;
 
 // Write authenticateRequest() here
 const authenticateRequest = (req, res, next) => {
-
+  const request = new OAuth2Server.Request(req);
+  const response = new OAuth2Server.Response(res);
 }
 
 // Write obtainToken() here
