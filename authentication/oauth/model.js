@@ -43,5 +43,6 @@ const getAccessToken = (accessToken) => {
 module.exports = {
   getClient: getClient,
   saveToken: saveToken,
-  getUserFromClient: getUserFromClient
+  getUserFromClient: getUserFromClient,
+  getAccessToken: getAccessToken
 }
