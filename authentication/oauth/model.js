@@ -32,7 +32,11 @@ const getUserFromClient = (client) => {
 // Write getAccessToken() function here
 
 const getAccessToken = (accessToken) => {
-
+  let tokens = 
+    db.tokens.filter((savedToken) => {
+      return savedToken.accessToken === accessToken;
+    })
+   return tokens[0];
 }
 
 
