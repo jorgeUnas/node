@@ -29,6 +29,13 @@ const getUserFromClient = (client) => {
     return {};
 };
 
+// Write getAccessToken() function here
+
+const getAccessToken = (accessToken) => {
+
+}
+
+
 module.exports = {
   getClient: getClient,
   saveToken: saveToken,
