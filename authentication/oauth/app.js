@@ -53,6 +53,11 @@ app.get('/login', (req, res)=>{
     res.sendFile(path.join(__dirname, 'public/login.html'));
 })
 
+// Add authenticateRequest as middleware to '/secret' here
+app.get('/secret', authenticateRequest, function(req, res){
+  res.send("Welcome to the secret area!");
+});
+
 app.get('/secret', (req, res)=>{
     res.send('Welcome to the secret area.');
 })
