@@ -5,7 +5,7 @@ describe('User visits root', () => {
     it('starts blank', () => {
       browser.url('/');
       
-      assert.equal(browser.getText('#messages'), '')
+      assert.equal(browser.getText('#messages'), '');
     })
   });
 });
