@@ -14,6 +14,7 @@ describe('User visits root', () => {
     it('saves the message with the author information', () => {
         const message = 'feature tests often hit every level of the TDD Testing Pyramid';
         const author = 'username';
+        browser.url('/');
  
     });
   });
