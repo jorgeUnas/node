@@ -18,6 +18,9 @@ describe('User visits root', () => {
         browser.setValue('input[id=author]', author);
         browser.setValue('textarea[id=message]', message);
         browser.click('input[type=submit]');
+        
+        assert.include(browser.getText('#messages'), author);
+        assert.include(browser.getText('#messages'), message)
  
     });
   });
