@@ -15,6 +15,9 @@ describe('User visits root', () => {
         const message = 'feature tests often hit every level of the TDD Testing Pyramid';
         const author = 'username';
         browser.url('/');
+        browser.setValue('input[id=author]', author);
+        browser.setValue('textarea[id=message]', message);
+        browser.click('input[type=submit]');
  
     });
   });
