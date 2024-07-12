@@ -9,6 +9,10 @@ describe('User visits root', () => {
           'Marianne Williamson';
           const source = 
           'A Return to Love: Reflections on the Principles of A Course in Miracles.'
+          
+        browser.url('/');
+        browser.setValue('textarea[id=quote]', quote);
+        
         })
   })
 })
