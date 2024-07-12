@@ -16,7 +16,7 @@ describe('HTML tests', () => {
   describe('#bar', () => {
     it('should include the string "Hello"', () => {
       // setup
-      const foo = '<html><div id="bar"></div><div id="buzz">Hello</div><html>';
+      const foo = '<html><div id="bar">Hello</div><div id="buzz">Hello</div><html>';
       //asserts
       // assert.include(foo, 'Hello'); 
       assert.include(parseTextFromHTML(foo, '#bar'), 'Hello'); 
