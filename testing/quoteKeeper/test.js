@@ -12,7 +12,7 @@ describe('User visits root', () => {
           
         browser.url('/');
         browser.setValue('textarea[id=quote]', quote);
-        
+        browser.setValue('input[id=attributed]', attributed);
         })
   })
 })
