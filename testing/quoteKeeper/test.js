@@ -14,6 +14,7 @@ describe('User visits root', () => {
         browser.setValue('textarea[id=quote]', quote);
         browser.setValue('input[id=attributed]', attributed);
         browser.setValue('input[id=source]', source);
+        browser.click('input[type=submit]')
   })
 })
 })
