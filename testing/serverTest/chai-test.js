@@ -6,7 +6,7 @@ describe('Array', () => {
       const foo = [4];
       const includedNumber = 4; 
       // check setup
-
+        assert.include(foo, includedNumber);
       // exercise
       const fooPop = foo.pop();
 
