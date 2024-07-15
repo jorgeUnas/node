@@ -11,7 +11,7 @@ describe('Array', () => {
       const fooPop = foo.pop();
 
       // asserts
-
+      assert.equal(fooPop, includedNumber);
     });
   });
 });
