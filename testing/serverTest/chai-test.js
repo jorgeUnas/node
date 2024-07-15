@@ -12,6 +12,7 @@ describe('Array', () => {
 
       // asserts
       assert.equal(fooPop, includedNumber);
+      assert.equal(foo.length, 0);
     });
   });
 });
