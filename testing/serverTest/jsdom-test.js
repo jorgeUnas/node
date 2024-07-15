@@ -18,7 +18,8 @@ describe('HTML tests', () => {
       // setup
       const foo = '<html><div id="bar"></div><div id="buzz">Hello</div><html>';
       //asserts
-      assert.include(foo, 'Hello'); 
+      // assert.include(foo, 'Hello'); 
+      assert.include(parseTextFromHTML(foo, '#bar'), 'Hello'); 
     });
   });
 });
