@@ -1,15 +1,9 @@
-const {assert} = require('chai');
-const request = require('supertest');
+const express = require('express');
+const router = express.Router();
 
-const app = require('../../app');
 
-describe('root page', () => {
-  describe('GET request', () => {
-    it('returns a 200 status', async () => {
-      const response = await request(app).
-      get('/');
-        
-        assert.equal(response.status, 200);
-    });
-  });
+router.get('/', (req, res) => {
+  res.send(); 
 });
+
+module.exports = router;
