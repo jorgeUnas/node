@@ -24,7 +24,7 @@ describe('root page', () => {
     it('contains the correct title', async () => {
       const response = await request(app).
       get('/');
-
+      assert.equal(parseTextFromHTML(response.text, '#page-title'), 'Messaging App');
     });
   });
 });
