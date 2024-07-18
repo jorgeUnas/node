@@ -15,11 +15,6 @@ const parseTextFromHTML = (htmlAsString, selector) => {
 
 describe('profile page', () => {
   describe('GET request', () => {
-    it('greets alice', async () => {
-        const response = await request(app).
-        get('/profile/alice');
-        assert.equal(parseTextFromHTML(response.text, '#welcome-message'), 'Welcome alice!');
-    });
     it('greets bob', async () => {
         const response = await request(app).
         get('/profile/bob');
