@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 
 
-router.get('/alice', (req, res) => {
+router.get('/:username', (req, res) => {
     res.send('<h1 id="welcome-message">Welcome alice!</h1>');
 });
 
