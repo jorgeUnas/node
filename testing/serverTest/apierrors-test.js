@@ -38,6 +38,8 @@ describe('/messages', () => {
         const response = await request(app)
           .post('/messages')
           .send({message});
+        assert.equal(response.status, 400);
+        assert.equal(JSON.parse(response.text).message, 'Every message requires an author')
 
         });
     });
