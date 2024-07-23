@@ -4,13 +4,12 @@ const router = express.Router();
 router.post('/', (req, res) => {
   const {author, message} = req.body;
 
-  /*if (author === undefined) {
+  if (author === undefined) {
     res.status(400);
     res.setHeader('Content-Type', 'application/json');
     res.send(JSON.stringify({ message: '' }));
     return
   }
-  */
   res.redirect('/');
 
 });
