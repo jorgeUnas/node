@@ -7,7 +7,7 @@ router.post('/', (req, res) => {
   if (author === undefined) {
     res.status(400);
     res.setHeader('Content-Type', 'application/json');
-    res.send(JSON.stringify({ message: '' }));
+    res.send(JSON.stringify({ message: 'Every message requires an author' }));
     return
   }
   res.redirect('/');
