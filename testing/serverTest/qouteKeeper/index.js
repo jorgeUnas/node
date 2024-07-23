@@ -8,4 +8,7 @@ router.post('/', (req, res) => {
     res.render('index', {quote, attributed, source});
 });
 
+router.get('/', (req, res) => {
+    
+})
 module.exports = router;
