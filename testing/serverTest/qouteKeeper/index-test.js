@@ -27,6 +27,9 @@ describe('/', () => {
                 .send({quote, attributed, source})
             
             assert.equal(response.status, 200);
+            assert.include(parseTextFromHTML(response.text, '#quotes'), quote);
+            assert.include(parseTextFromHTML(response.text, '#quotes'), attributed);
+            assert.include(parseTextFromHTML(response.text, '#quotes'), source);
         })
     })
 })
