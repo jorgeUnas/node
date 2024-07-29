@@ -25,6 +25,8 @@ describe('/', () => {
                 .post('/')
                 .type('form')
                 .send({quote, attributed, source})
+            
+            assert.equal(response.status, 200);
         })
     })
 })
