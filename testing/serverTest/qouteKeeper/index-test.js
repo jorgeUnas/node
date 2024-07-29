@@ -17,7 +17,9 @@ const parseTextFromHTML = (htmlAsString, selector) => {
 describe('/', () => {
     describe('POST', () => {
         it('Creates a new quote', async () => {
-            
+            const quote = 'Our deepest fear is not that we are inadequate. Our deepest fear is that we are powerful beyond measure.';
+            const attributed = 'Marianne Williamson';
+            const source = 'A Return to Love: Reflections on the Principles of A Course in Miracles';
         })
     })
 })
