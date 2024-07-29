@@ -13,3 +13,11 @@ const parseTextFromHTML = (htmlAsString, selector) => {
       throw new Error(`No element with selector ${selector} found in HTML string`);
     }
 };
+
+describe('/', () => {
+    describe('POST', () => {
+        it('Creates a new quote', async () => {
+            
+        })
+    })
+})
